@@ -27,7 +27,7 @@ var mycolor = new Color({hsv:[0, 1, 1]});
 
 ````javascript
 // HTML5 name (if any)
-mycolor.HTML5 = 'DodgerBlue';
+mycolor.HTML5 = 'Red';
 // RGB values
 mycolor.rgb = [255, 0, 0];
 mycolor.red = 255;
