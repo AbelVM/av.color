@@ -12,7 +12,7 @@ Color = function (a) {
         } else if (typeof (a) == 'string') {
             this.rgb = Color.hexToRgb(a) || Color.hexToRgb(Color.HTML5[a]);
         } else if (a.hasOwnProperty('hex')) {
-            this.rgb = Color.hexToRgb(a.rgb)
+            this.rgb = Color.hexToRgb(a.hex)
         } else if (a.hasOwnProperty('rgb')) {
             this.rgb = a.rgb;
         } else if (a.hasOwnProperty('hsl')) {
