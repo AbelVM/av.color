@@ -1,4 +1,4 @@
-# av.color: a Javascript library to deal with colors
+# av.color: a JavaScript library to deal with colors
 
 This tiny lib eases the way you manage the colors in your app by encapsulating everything in an object.
 
