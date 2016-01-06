@@ -517,9 +517,9 @@ Color.HTML5 = {
 }
 
 /**
- * [invert description]
- * @param  {[type]} hex [description]
- * @return {[type]}     [description]
+ * Invierte un color
+ * @param  {String} hex  Expresión hexadecimal del color de entrada
+ * @return {String}     Expresión hexadecimal del color de salida
  */
 Color.invert = function (hex) {
     var color = hex;
