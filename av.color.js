@@ -16,9 +16,9 @@ Color = function (a) {
         } else if (a.hasOwnProperty('rgb')) {
             this.rgb = a.rgb;
         } else if (a.hasOwnProperty('hsl')) {
-            this.rgb = Color.hslToRgb(this);
+            this.rgb = Color.hslToRgb(a.hsl[0],a.hsl[1],a.hsl[2]);
         } else if (a.hasOwnProperty('hsv')) {
-            this.rgb = Color.hsvToRgb(this);
+            this.rgb = Color.hsvToRgb(a.hsv[0],a.hsv[1],a.hsv[2]);
         };
     } catch (error) {
         if (typeof (a) == 'string') {
