@@ -1,6 +1,6 @@
 {
   "name": "av.color",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "a JavaScript library to deal with colors",
   "main": "av.color.js",
   "scripts": {
