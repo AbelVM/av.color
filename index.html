@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name=viewport content="width=device-width initial-scale=1">
+    <title>Gradient tester</title>
+    <script src="./av.color.js"></script>
+    <style id="layerCSS">
+        .grad {
+            width: 400px;
+            height: 20px;
+            margin: 25px;
+            border: solid 1px black;
+        }
+
+        html,
+        body {
+            font-family: 'Arial';
+        }
+    </style>
+</head>
+
+<body>
+    <label>Paste your (linear) color ramp as JavaScript array </label>
+    <input type='text' id='ramp' style='width:50em' value="['#ffffcc','#a1dab4','#41b6c4','#2c7fb8','#253494']">
+    <br>
+    <label>Number of output steps </label>
+    <input type='text' id='steps' style='width:2em' value="5">
+    <br>
+    <br>
+    <hr> y = x
+    <div class='grad' id='linear'></div>
+    <input type='text' id='linearramp' style='width:50em'>
+    <br>
+    <br>
+    <hr> y = log(x)
+    <div class='grad' id='log'></div>
+    <input type='text' id='logramp' style='width:50em'>
+    <script>
+        var ramp2grad = function (ramptext, isLog) {
+                var ramp = ramptext.replace('[','').replace(']','').replace(/\'/g,'').split(','),
+                    lineargrad = new Color.Gradient(ramp.map(function (a, b) {
+                        var step = b * 100 / (ramp.length - 1);
+                        return {
+                            color: a,
+                            stop: step
+                        }
+                    })),
+                    loggrad = new Color.Gradient(ramp.map(function (a, b) {
+                        var step = b * 100 / (ramp.length - 1);
+                        step = (step == 0) ? 0 : Math.log(step) * 100 / Math.log(100);
+                        return {
+                            color: a,
+                            stop: step
+                        }
+                    }));
+                return (isLog) ? loggrad : lineargrad;
+            },
+            grad2ramp = function (gradient, steps) {
+                var ramp = [];
+                for (var i = 0; i < steps; i++) {
+                    ramp.push(gradient.get(i * 100 / (steps - 1)).hex)
+                }
+                return "['" +ramp.join("','")+"']";
+            },
+            gradient2css = function (g) {
+                var css = '';
+                for (var i = 0; i < g.options.length; i++) {
+                    css += (css.length > 0) ? ',' : '';
+                    css += g.options[i].color + ' ' + g.options[i].stop.toFixed(0) + '%';
+                }
+                return css;
+            },
+            inputramp = document.querySelector('#ramp'),
+            inpusteps = document.querySelector('#steps'),
+            go = function () {
+                try {
+                    var lineargrad = ramp2grad(inputramp.value, false),
+                        loggrad = ramp2grad(inputramp.value, true),
+                        steps = document.querySelector('#steps').value*1,
+                        css1 = "linear-gradient(to right," + gradient2css(lineargrad) + ")",
+                        css2 = "linear-gradient(to right," + gradient2css(loggrad) + ")";
+                    document.querySelector('#linear').style.background = css1;
+                    document.querySelector('#log').style.background = css2;
+                    document.querySelector('#linearramp').value =grad2ramp(lineargrad,steps);
+                    document.querySelector('#logramp').value =grad2ramp(loggrad,steps);
+                } catch (error) {
+                    debugger;
+                }
+            };
+
+        inputramp.onkeyup = go;
+        inpusteps.onkeyup = go;
+        go();
+
+    </script>
+</body>

@@ -162,7 +162,7 @@ Color = function (a) {
  * Devuelve los valores RGB de un color expresado en hexadecimal como RRGGBB o RGB, con o sin #
  * @method hexToRgb
  * @param {string} hex - cadena hexadecimal que representa el color
- * @returns {array} -  los valores decimales de cada canal 
+ * @returns {array} -  los valores decimales de cada canal
  * @author Abel Vázquez
  * @version 1.0.0
  */
@@ -183,7 +183,7 @@ Color.hexToRgb = function (hex) {
 /**
  * Genera la cadena de color hexadecimal en formato #RRGGBB a partir de los valores de cada canal
  * @method rgbToHex
- * @param {number} r - valor decimal del canal rojo 
+ * @param {number} r - valor decimal del canal rojo
  * @param {number} g - valor decimal del canal verde
  * @param {number} b - valor decimal del canal azul
  * @returns {string} - nuevo valor de color hexadecimal
@@ -357,7 +357,7 @@ Color.hsvToRgb = function (h, s, v) {
 /**
  * Aumentamos la luminancia de un color expresado en RGB
  * @method Luminance
- * @param {number} lum - factor en tanto por uno 
+ * @param {number} lum - factor en tanto por uno
  * @returns {array} - nuevo valor de color RGB
  * @author Abel Vázquez
  * @version 1.0.0
@@ -537,7 +537,7 @@ Color.invert = function (hex) {
  * @param {Color} color1  Color inicial
  * @param {Color} color2  Color final
  * @param {integer} percent Valor de 0 a 100
- * @return Color                         
+ * @return Color
  */
 Color.gradient = function (color1, color2, percent) {
     var c1 = new Color(color1),
@@ -570,7 +570,7 @@ Color.Gradient = function (options) {
 /**
  * Devuelve el valor del color en un punto determinado del gradiente
  * @param {integer} percent Valor de 0 a 100
- * @return Color                         
+ * @return Color
  */
 Color.Gradient.prototype.get = function (percentage) {
     var current,
