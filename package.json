@@ -1,0 +1,22 @@
+{
+  "name": "av.color",
+  "version": "0.0.1",
+  "description": "a JavaScript library to deal with colors",
+  "main": "av.color.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbelVM/av.color.git"
+  },
+  "keywords": [
+    "color"
+  ],
+  "author": "AbelVM",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AbelVM/av.color/issues"
+  },
+  "homepage": "https://github.com/AbelVM/av.color#readme"
+}
