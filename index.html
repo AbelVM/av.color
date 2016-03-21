@@ -26,7 +26,7 @@
     <input type='text' id='ramp' style='width:50em' value="['#ffffcc','#a1dab4','#41b6c4','#2c7fb8','#253494']">
     <br>
     <label>Number of output steps </label>
-    <input type='text' id='steps' style='width:2em' value="5">
+    <input type='number' step=1 id='steps' style='width:3em' value="5">
     <br>
     <br>
     <hr> y = x
@@ -39,7 +39,7 @@
     <input type='text' id='logramp' style='width:50em'>
     <script>
         var ramp2grad = function (ramptext, isLog) {
-                var ramp = ramptext.replace('[','').replace(']','').replace(/\'/g,'').split(','),
+                var ramp = ramptext.replace('[','').replace(']','').replace(/\"/g,'').replace(/\'/g,'').replace(/\s+/g, '').split(','),
                     lineargrad = new Color.Gradient(ramp.map(function (a, b) {
                         var step = b * 100 / (ramp.length - 1);
                         return {
@@ -83,8 +83,8 @@
                         css2 = "linear-gradient(to right," + gradient2css(loggrad) + ")";
                     document.querySelector('#linear').style.background = css1;
                     document.querySelector('#log').style.background = css2;
-                    document.querySelector('#linearramp').value =grad2ramp(lineargrad,steps);
-                    document.querySelector('#logramp').value =grad2ramp(loggrad,steps);
+                    document.querySelector('#linearramp').value = grad2ramp(lineargrad,steps);
+                    document.querySelector('#logramp').value = grad2ramp(loggrad,steps);
                 } catch (error) {
                     debugger;
                 }
@@ -92,6 +92,7 @@
 
         inputramp.onkeyup = go;
         inpusteps.onkeyup = go;
+        inpusteps.onchange = go;
         go();
 
     </script>
